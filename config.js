@@ -1,7 +1,7 @@
 var path = require('path');
 var mail = {};
 
-if (process.env.MAIL) {
+if (process.env.MAIL_TRASNPORT != null) {
 	mail.transport = process.env.MAIL_TRANSPORT;
 	if (mail.transport == 'SES') {
 		mail.options = {
@@ -10,20 +10,13 @@ if (process.env.MAIL) {
 			}
 	}
 	if (mail.transport == 'SMTP') {
-		if (process.env.MAIL_USE_HOST) mail.host = process.env.MAIL_HOST;
+		if (process.env.MAIL_HOST != null) mail.host = process.env.MAIL_HOST;
 		mail.options = {
 		service: process.env.MAIL_SERVICE,
 		auth: {
 			user: process.env.MAIL_USER,
 			pass: process.env.MAIL_PASS
 			}
-		}
-	}
-	mail.options = {
-		service: process.env.MAIL_SERVICE,
-		auth: {
-			user: process.env.MAIL_USER,
-			pass: process.env.MAIL_PASS
 		}
 	}
 }
