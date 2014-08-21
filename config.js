@@ -3,14 +3,6 @@ var mail = {};
 
 if (process.env.MAIL_TRANSPORT != null) {
 	mail.transport = process.env.MAIL_TRANSPORT;
-	if (mail.transport == 'SES') {
-		mail.options = {
-		AWSAccessKeyID: process.env.MAIL_AWS_KEY,
-		AWSSecretKey: process.env.MAIL_AWS_SECRET
-			}
-	}
-	if (mail.transport == 'SMTP') {
-		if (process.env.MAIL_HOST != null) mail.host = process.env.MAIL_HOST;
 		mail.options = {
 		service: process.env.MAIL_SERVICE,
 		auth: {
@@ -18,8 +10,6 @@ if (process.env.MAIL_TRANSPORT != null) {
 			pass: process.env.MAIL_PASS
 			}
 		}
-	}
-    if (process.env.MAIL_FROM != null) mail.fromaddress = process.env.MAIL_FROM;
 }
 var database = {
 	client: 'sqlite3',
