@@ -21,7 +21,6 @@ if (process.env.MAIL_TRANSPORT != null) {
 	}
     if (process.env.MAIL_FROM != null) mail.fromaddress = process.env.MAIL_FROM;
     if (process.env.MAIL_PORT != null) mail.options.port = process.env.MAIL_PORT;
-    console.log("mail:"+mail);
 }
 var database = {
 	client: 'sqlite3',
