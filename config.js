@@ -1,7 +1,7 @@
 var path = require('path');
 var mail = {};
 
-if (process.env.MAIL_TRASNPORT != null) {
+if (process.env.MAIL_TRANSPORT != null) {
 	mail.transport = process.env.MAIL_TRANSPORT;
 	if (mail.transport == 'SES') {
 		mail.options = {
