@@ -10,7 +10,7 @@ if (process.env.MAIL) {
 			}
 	}
 	if (mail.transport == 'SMTP') {
-		if (process.env.MAIL_USE_HOST) mail.host: process.env.MAIL_HOST;
+		if (process.env.MAIL_USE_HOST) mail.host = process.env.MAIL_HOST;
 		mail.options = {
 		service: process.env.MAIL_SERVICE,
 		auth: {
