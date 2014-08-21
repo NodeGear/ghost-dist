@@ -20,6 +20,7 @@ if (process.env.MAIL_TRANSPORT != null) {
 		}
 	}
     if (process.env.MAIL_FROM != null) mail.fromaddress = process.env.MAIL_FROM;
+    console.log(mail);
 }
 var database = {
 	client: 'sqlite3',
