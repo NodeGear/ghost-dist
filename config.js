@@ -5,11 +5,20 @@ if (process.env.MAIL) {
 	mail.transport = process.env.MAIL_TRANSPORT;
 	if (mail.transport == 'SES') {
 		mail.options = {
-        AWSAccessKeyID: process.env.MAIL_AWS_KEY,
-        AWSSecretKey: process.env.MAIL_AWS_SECRET
-	    }
+		AWSAccessKeyID: process.env.MAIL_AWS_KEY,
+		AWSSecretKey: process.env.MAIL_AWS_SECRET
+			}
 	}
-	if (process.env.MAIL_USE_HOST) mail.host: process.env.MAIL_HOST;
+	if (mail.transport == 'SMTP') {
+		if (process.env.MAIL_USE_HOST) mail.host: process.env.MAIL_HOST;
+		mail.options = {
+		service: process.env.MAIL_SERVICE,
+		auth: {
+			user: process.env.MAIL_USER,
+			pass: process.env.MAIL_PASS
+			}
+		}
+	}
 	mail.options = {
 		service: process.env.MAIL_SERVICE,
 		auth: {
@@ -42,13 +51,13 @@ if (process.env.DATABASE) {
 }
 
 module.exports = {
-    production: {
-        url: 'http://'+process.env.DOMAIN,
-        mail: mail,
-        database: database,
-        server: {
-            host: '0.0.0.0',
-            port: process.env.PORT
-        }
-    }
+	production: {
+		url: 'http://'+process.env.DOMAIN,
+		mail: mail,
+		database: database,
+		server: {
+			host: '0.0.0.0',
+			port: process.env.PORT
+		}
+	}
 };
