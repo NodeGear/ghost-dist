@@ -4,7 +4,7 @@ var mail = {};
 if (process.env.MAIL) {
 	mail.transport = process.env.MAIL_TRANSPORT;
 	if (mail.transport == 'SES') {
-		mail.options: {
+		mail.options = {
         AWSAccessKeyID: process.env.MAIL_AWS_KEY,
         AWSSecretKey: process.env.MAIL_AWS_SECRET
 	    }
