@@ -1,5 +1,6 @@
 var path = require('path');
 var mail = {};
+var domain_protocol = 'http://';
 
 if (process.env.MAIL_TRANSPORT != null) {
 	mail.transport = process.env.MAIL_TRANSPORT;
@@ -48,9 +49,13 @@ if (process.env.DATABASE) {
 	};
 }
 
+if (process.env.USE_HTTPS) {
+	domain_protocol = 'https://';
+}
+
 module.exports = {
 	production: {
-		url: 'http://'+process.env.DOMAIN,
+		url: domain_protocol+process.env.DOMAIN,
 		mail: mail,
 		database: database,
 		server: {
