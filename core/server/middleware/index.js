@@ -164,7 +164,7 @@ function isSSLrequired(isAdmin) {
 // Check to see if we should use SSL
 // and redirect if needed
 function checkSSL(req, res, next) {
-    if (isSSLrequired(res.isAdmin)) {
+    if (isSSLrequired(res.isAdmin) && !process.env.USE_HTTPS) {
         if (!req.secure) {
             var forceAdminSSL = config.forceAdminSSL,
                 redirectUrl;
